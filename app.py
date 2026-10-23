@@ -34,7 +34,11 @@ youtube = load_csv(DATA / "youtube_sentiment_results.csv")
 synthetic = load_csv(DATA / "transformer_sentiment_predictions.csv")
 topics = load_csv(DATA / "youtube_topic_summary.csv")
 network = load_csv(DATA / "youtube_network_metrics.csv")
-misinfo = load_csv(REPORTS / "misinformation_evaluation_report.csv")
+misinfo = load_csv(
+    REPORTS / "misinformation_evaluation_report.csv"
+    if (REPORTS / "misinformation_evaluation_report.csv").exists()
+    else BASE / "misinformation_evaluation_report.csv"
+)
 trend = load_csv(DATA / "youtube_sentiment_trends_by_year.csv")
 
 source = st.sidebar.selectbox(
